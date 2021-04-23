@@ -16,7 +16,7 @@
             </div>
         </div>
         <?= form_open('guru/delete', array('id' => 'bulk')) ?>
-        <table id="dosen" class="w-100 table table-striped table-bordered table-hover">
+        <table id="guru" class="w-100 table table-striped table-bordered table-hover">
             <thead>
                 <tr>
                     <th>No.</th>

@@ -13,19 +13,21 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <div class="form-group col-sm-12">
-                            <label>Guru (Mata Pelajaran)</label>
+                            <label>Tes (Minat Bakat)</label>
                             <?php if( $this->ion_auth->is_admin() ) : ?>
-                            <select name="guru_id" required="required" id="dosen_id" class="select2 form-group" style="width:100% !important">
-                                <option value="" disabled selected>Pilih Guru</option>
-                                <?php foreach ($guru as $g) : ?>
-                                    <option value="<?=$d->id_guru?>:<?=$d->matkul_id?>"><?=$d->nama_guru?> (<?=$d->nama_matkul?>)</option>
+                            <select name="tes_id" required="required" id="tes_id" class="select2 form-group" style="width:100% !important">
+                                <option value="" disabled selected>--Pilih Tes--</option>
+                                    <option value="minat">Tes Minat</option>
+                                    <option value="bakat">Tes Bakat</option>
+                                <?php foreach ($tes as $g) : ?>
+                                    <option value="<?=$d->id_tes?>:<?=$d->matkul_id?>"><?=$d->nama_tes?> (<?=$d->nama_matkul?>)</option>
                                 <?php endforeach; ?>
                             </select>
-                            <small class="help-block" style="color: #dc3545"><?=form_error('guru_id')?></small>
+                            <small class="help-block" style="color: #dc3545"><?=form_error('tes_id')?></small>
                             <?php else : ?>
-                            <input type="hidden" name="guru_id" value="<?=$guru->id_guru;?>">
-                            <input type="hidden" name="matkul_id" value="<?=$guru->matkul_id;?>">
-                            <input type="text" readonly="readonly" class="form-control" value="<?=$guru->nama_guru; ?> (<?=$guru->nama_matkul; ?>)">
+                            <input type="hidden" name="tes_id" value="<?=$tes->id_tes;?>">
+                            <input type="hidden" name="matkul_id" value="<?=$tes->matkul_id;?>">
+                            <input type="text" readonly="readonly" class="form-control" value="<?=$tes->nama_tes; ?> (<?=$tes->nama_matkul; ?>)">
                             <?php endif; ?>
                         </div>
                         

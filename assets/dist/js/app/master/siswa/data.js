@@ -3,10 +3,10 @@ var table;
 $(document).ready(function() {
   ajaxcsrf();
 
-  table = $("#mahasiswa").DataTable({
+  table = $("#siswa").DataTable({
     initComplete: function() {
       var api = this.api();
-      $("#mahasiswa_filter input")
+      $("#siswa_filter input")
         .off(".DT")
         .on("keyup.DT", function(e) {
           api.search(this.value).draw();
@@ -40,28 +40,27 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     ajax: {
-      url: base_url + "mahasiswa/data",
+      url: base_url + "siswa/data",
       type: "POST"
       //data: csrf
     },
     columns: [
       {
-        data: "id_mahasiswa",
+        data: "id_siswa",
         orderable: false,
         searchable: false
       },
-      { data: "nim" },
       { data: "nama" },
       { data: "email" },
-      { data: "nama_kelas" },
-      { data: "nama_jurusan" }
+      { data: "kelas_id" },
+      { data: "jurusan" }
     ],
     columnDefs: [
       {
         searchable: false,
         targets: 6,
         data: {
-          id_mahasiswa: "id_mahasiswa",
+          id_siswa: "id_siswa",
           ada: "ada"
         },
         render: function(data, type, row, meta) {
@@ -69,12 +68,12 @@ $(document).ready(function() {
           if (data.ada > 0) {
             btn = "";
           } else {
-            btn = `<button data-id="${data.id_mahasiswa}" type="button" class="btn btn-xs btn-primary btn-aktif">
+            btn = `<button data-id="${data.id_siswa}" type="button" class="btn btn-xs btn-primary btn-aktif">
 								<i class="fa fa-user-plus"></i>
 							</button>`;
           }
           return `<div class="text-center">
-									<a class="btn btn-xs btn-warning" href="${base_url}mahasiswa/edit/${data.id_mahasiswa}">
+									<a class="btn btn-xs btn-warning" href="${base_url}siswa/edit/${data.id_siswa}">
 										<i class="fa fa-pencil"></i>
 									</a>
 									${btn}
@@ -83,7 +82,7 @@ $(document).ready(function() {
       },
       {
         targets: 7,
-        data: "id_mahasiswa",
+        data: "id_siswa",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
 									<input name="checked[]" class="check" value="${data}" type="checkbox">
@@ -107,7 +106,7 @@ $(document).ready(function() {
   table
     .buttons()
     .container()
-    .appendTo("#mahasiswa_wrapper .col-md-6:eq(0)");
+    .appendTo("#siswa_wrapper .col-md-6:eq(0)");
 
   $(".select_all").on("click", function() {
     if (this.checked) {
@@ -123,9 +122,9 @@ $(document).ready(function() {
     }
   });
 
-  $("#mahasiswa tbody").on("click", "tr .check", function() {
-    var check = $("#mahasiswa tbody tr .check").length;
-    var checked = $("#mahasiswa tbody tr .check:checked").length;
+  $("#siswa tbody").on("click", "tr .check", function() {
+    var check = $("#siswa tbody tr .check").length;
+    var checked = $("#siswa tbody tr .check:checked").length;
     if (check === checked) {
       $(".select_all").prop("checked", true);
     } else {
@@ -167,11 +166,11 @@ $(document).ready(function() {
     });
   });
 
-  $("#mahasiswa").on("click", ".btn-aktif", function() {
+  $("#siswa").on("click", ".btn-aktif", function() {
     let id = $(this).data("id");
 
     $.ajax({
-      url: base_url + "mahasiswa/create_user",
+      url: base_url + "siswa/create_user",
       data: "id=" + id,
       type: "GET",
       success: function(response) {
@@ -191,7 +190,7 @@ $(document).ready(function() {
 });
 
 function bulk_delete() {
-  if ($("#mahasiswa tbody tr .check:checked").length == 0) {
+  if ($("#siswa tbody tr .check:checked").length == 0) {
     Swal({
       title: "Gagal",
       text: "Tidak ada data yang dipilih",

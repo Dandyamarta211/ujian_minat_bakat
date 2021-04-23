@@ -10,7 +10,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                <?=form_open('siswa/save', array('id'=>'siswa'), array('method'=>'add'))?>
+                <?=form_open('siswa/save', array('id'=>'formsiswa'), array('method'=>'add'))?>
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input placeholder="Nama" type="text" name="nama" class="form-control">
@@ -36,13 +36,13 @@
                             <option value="">-- Pilih --</option>
                             <option value="rpl">RPL</option>
                             <option value="tkj">TKJ</option>
-                            <option value="multimedia">MULTIMEDIA</option>
-                            <option value="akutansi">AKUTANSI</option>
-                            <option value="pemasaran">PEMASARAN</option>
-                            <option value="perbankan">PERBANKAN SYARIAH</option>
+                            <option value="MM">MULTIMEDIA</option>
+                            <option value="AK">AKUTANSI</option>
+                            <option value="PMS">PEMASARAN</option>
+                            <option value="PBK">PERBANKAN SYARIAH</option>
                         </select>
                         <small class="help-block"></small>
-                    </div>
+                    </div> 
                     <div class="form-group">
                         <label for="kelas">Kelas</label>
                         <select id="kelas" name="kelas" class="form-control select2">

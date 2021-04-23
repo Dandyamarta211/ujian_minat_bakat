@@ -54,7 +54,7 @@ class Siswa extends CI_Controller
 
 	public function edit($id)
 	{
-		$mhs = $this->master->getSiswaById($id);
+		$sws = $this->master->getSiswaById($id);
 		$data = [
 			'user' 		=> $this->ion_auth->user()->row(),
 			'judul'		=> 'Siswa',
@@ -92,7 +92,7 @@ class Siswa extends CI_Controller
 	public function save()
 	{
 		$method = $this->input->post('method', true);
-		$this->validasi_siswa($method);
+		$this->validasi_siswa($method); 
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = [
@@ -111,6 +111,7 @@ class Siswa extends CI_Controller
 				'email' 		=> $this->input->post('email', true),
 				'nama' 			=> $this->input->post('nama', true),
 				'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
+				'jurusan' => $this->input->post('jurusan', true),
 				'kelas_id' 		=> $this->input->post('kelas', true),
 			];
 			if ($method === 'add') {

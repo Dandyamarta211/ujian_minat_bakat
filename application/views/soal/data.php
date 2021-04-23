@@ -14,7 +14,9 @@
 			<div class="form-group col-sm-4 text-center">
 				<?php if ( $this->ion_auth->is_admin() ) : ?>
 					<select id="matkul_filter" class="form-control select2" style="width:100% !important">
-						<option value="all">Semua Mata Pelajaran</option>
+						<option value="all">Semua tes minat dan bakat</option>
+						<option value="minat">Tes Minat</option>
+                        <option value="bakat">Tes Bakat</option>
 						<?php foreach ($matkul as $m) :?>
 							<option value="<?=$m->id_matkul?>"><?=$m->nama_matkul?></option>
 						<?php endforeach; ?>

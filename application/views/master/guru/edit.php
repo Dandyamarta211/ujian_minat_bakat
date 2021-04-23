@@ -1,9 +1,9 @@
-<?=form_open('guru/save', array('id'=>'formdosen'), array('method'=>'edit', 'id_guru'=>$data->id_guru));?>
+<?=form_open('guru/save', array('id'=>'formguru'), array('method'=>'edit', 'id_guru'=>$data->id_guru));?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Form <?=$subjudul?></h3>
         <div class="box-tools pull-right">
-            <a href="<?=base_url()?>dosen" class="btn btn-sm btn-flat btn-warning">
+            <a href="<?=base_url()?>guru" class="btn btn-sm btn-flat btn-warning">
                 <i class="fa fa-arrow-left"></i> Batal
             </a>
         </div>
@@ -18,12 +18,12 @@
                 </div>
                 <div class="form-group">
                     <label for="nama_guru">Nama Guru</label>
-                    <input value="<?=$data->nama_guru?>" type="text" class="form-control" name="nama_dosen" placeholder="Nama Dosen">
+                    <input value="<?=$data->nama_guru?>" type="text" class="form-control" name="nama_guru" placeholder="Nama Guru">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Guru</label>
-                    <input value="<?=$data->email?>" type="text" class="form-control" name="email" placeholder="Email Dosen">
+                    <input value="<?=$data->email?>" type="text" class="form-control" name="email" placeholder="Email Guru">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">

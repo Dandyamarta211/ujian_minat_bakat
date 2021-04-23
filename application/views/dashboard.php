@@ -21,7 +21,7 @@
         <b><center>Aplikasi Minat dan Bakat Ini Untuk Menentukan Jurusan <br> Pada Siswa Baru Smk Islam Batu</center></b>
         <center><img src="assets/img/smk.png"></center>
     </div>
-<?php elseif( $this->ion_auth->in_group('dosen') ) : ?>
+<?php elseif( $this->ion_auth->in_group('guru') ) : ?>
 
 <div class="row">
     <div class="col-sm-4">
@@ -32,7 +32,7 @@
             <table class="table table-hover">
                 <tr>
                     <th>Nama</th>
-                    <td><?=$guru->nama_dosen?></td>
+                    <td><?=$guru->nama_guru?></td>
                 </tr>
                 <tr>
                     <th>NIP</th>

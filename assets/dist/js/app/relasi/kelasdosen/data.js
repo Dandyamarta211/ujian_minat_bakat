@@ -4,10 +4,10 @@ var table;
 $(document).ready(function() {
   ajaxcsrf();
 
-  table = $("#kelasdosen").DataTable({
+  table = $("#kelasguru").DataTable({
     initComplete: function() {
       var api = this.api();
-      $("#kelasdosen_filter input")
+      $("#kelasguru_filter input")
         .off(".DT")
         .on("keyup.DT", function(e) {
           api.search(this.value).draw();
@@ -41,7 +41,7 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     ajax: {
-      url: base_url + "kelasdosen/data",
+      url: base_url + "kelasguru/data",
       type: "POST"
     },
     columns: [
@@ -51,7 +51,7 @@ $(document).ready(function() {
         searchable: false
       },
       { data: "nip" },
-      { data: "nama_dosen" }
+      { data: "nama_guru" }
     ],
     columnDefs: [
       {
@@ -74,10 +74,10 @@ $(document).ready(function() {
         targets: 4,
         searchable: false,
         orderable: false,
-        data: "id_dosen",
+        data: "id_guru",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
-									<a href="${base_url}kelasdosen/edit/${data}" class="btn btn-warning btn-xs">
+									<a href="${base_url}kelasguru/edit/${data}" class="btn btn-warning btn-xs">
 										<i class="fa fa-pencil"></i>
 									</a>
 								</div>`;
@@ -87,7 +87,7 @@ $(document).ready(function() {
         targets: 5,
         searchable: false,
         orderable: false,
-        data: "id_dosen",
+        data: "id_guru",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
 									<input name="checked[]" class="check" value="${data}" type="checkbox">
@@ -111,7 +111,7 @@ $(document).ready(function() {
   table
     .buttons()
     .container()
-    .appendTo("#kelasdosen_wrapper .col-md-6:eq(0)");
+    .appendTo("#kelasguru_wrapper .col-md-6:eq(0)");
 
   $(".select_all").on("click", function() {
     if (this.checked) {
@@ -127,9 +127,9 @@ $(document).ready(function() {
     }
   });
 
-  $("#kelasdosen tbody").on("click", "tr .check", function() {
-    var check = $("#kelasdosen tbody tr .check").length;
-    var checked = $("#kelasdosen tbody tr .check:checked").length;
+  $("#kelasguru tbody").on("click", "tr .check", function() {
+    var check = $("#kelasguru tbody tr .check").length;
+    var checked = $("#kelasguru tbody tr .check:checked").length;
     if (check === checked) {
       $(".select_all").prop("checked", true);
     } else {
@@ -138,7 +138,7 @@ $(document).ready(function() {
   });
 
   $("#bulk").on("submit", function(e) {
-    if ($(this).attr("action") == base_url + "kelasdosen/delete") {
+    if ($(this).attr("action") == base_url + "kelasguru/delete") {
       e.preventDefault();
       e.stopImmediatePropagation();
 
@@ -175,14 +175,14 @@ $(document).ready(function() {
 });
 
 function bulk_delete() {
-  if ($("#kelasdosen tbody tr .check:checked").length == 0) {
+  if ($("#kelasguru tbody tr .check:checked").length == 0) {
     Swal({
       title: "Gagal",
       text: "Tidak ada data yang dipilih",
       type: "error"
     });
   } else {
-    $("#bulk").attr("action", base_url + "kelasdosen/delete");
+    $("#bulk").attr("action", base_url + "kelasguru/delete");
     Swal({
       title: "Anda yakin?",
       text: "Data akan dihapus!",

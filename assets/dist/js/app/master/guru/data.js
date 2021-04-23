@@ -3,10 +3,10 @@ var table;
 $(document).ready(function() {
   ajaxcsrf();
 
-  table = $("#dosen").DataTable({
+table = $("#guru").DataTable({
     initComplete: function() {
       var api = this.api();
-      $("#dosen_filter input")
+      $("#guru_filter input")
         .off(".DT")
         .on("keyup.DT", function(e) {
           api.search(this.value).draw();
@@ -40,39 +40,31 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     ajax: {
-      url: base_url + "dosen/data",
+      url: base_url + "guru/data",
       type: "POST"
     },
     columns: [
       {
-        data: "id_dosen",
+        data: "id_guru",
         orderable: false,
         searchable: false
       },
       { data: "nip" },
-      { data: "nama_dosen" },
+      { data: "nama_guru" },
       { data: "email" },
-      { data: "nama_matkul" }
+      { data: "matkul_id" }
     ],
     columnDefs: [
       {
         searchable: false,
         targets: 5,
         data: {
-          id_dosen: "id_dosen",
-          ada: "ada"
+          id_guru: "id_guru" 
         },
         render: function(data, type, row, meta) {
-          let btn;
-          if (data.ada > 0) {
-            btn = "";
-          } else {
-            btn = `<button type="button" class="btn btn-aktif btn-primary btn-xs" data-id="${data.id_dosen}">
-								<i class="fa fa-user-plus"></i> Aktif
-							</button>`;
-          }
+           
           return `<div class="text-center">
-							<a href="${base_url}dosen/edit/${data.id_dosen}" class="btn btn-xs btn-warning">
+							<a href="${base_url}guru/edit/${data.id_guru}" class="btn btn-xs btn-warning">
 								<i class="fa fa-pencil"></i> Edit
 							</a>
 							${btn}
@@ -81,7 +73,7 @@ $(document).ready(function() {
       },
       {
         targets: 6,
-        data: "id_dosen",
+        data: "id_guru",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
 									<input name="checked[]" class="check" value="${data}" type="checkbox">
@@ -105,7 +97,7 @@ $(document).ready(function() {
   table
     .buttons()
     .container()
-    .appendTo("#dosen_wrapper .col-md-6:eq(0)");
+    .appendTo("#guru_wrapper .col-md-6:eq(0)");
 
   $(".select_all").on("click", function() {
     if (this.checked) {
@@ -121,9 +113,9 @@ $(document).ready(function() {
     }
   });
 
-  $("#dosen tbody").on("click", "tr .check", function() {
-    var check = $("#dosen tbody tr .check").length;
-    var checked = $("#dosen tbody tr .check:checked").length;
+  $("#guru tbody").on("click", "tr .check", function() {
+    var check = $("#guru tbody tr .check").length;
+    var checked = $("#guru tbody tr .check:checked").length;
     if (check === checked) {
       $(".select_all").prop("checked", true);
     } else {
@@ -165,11 +157,11 @@ $(document).ready(function() {
     });
   });
 
-  $("#dosen").on("click", ".btn-aktif", function() {
+  $("#guru").on("click", ".btn-aktif", function() {
     let id = $(this).data("id");
 
     $.ajax({
-      url: base_url + "dosen/create_user",
+      url: base_url + "guru/create_user",
       data: "id=" + id,
       type: "GET",
       success: function(response) {
@@ -189,7 +181,7 @@ $(document).ready(function() {
 });
 
 function bulk_delete() {
-  if ($("#dosen tbody tr .check:checked").length == 0) {
+  if ($("#guru tbody tr .check:checked").length == 0) {
     Swal({
       title: "Gagal",
       text: "Tidak ada data yang dipilih",

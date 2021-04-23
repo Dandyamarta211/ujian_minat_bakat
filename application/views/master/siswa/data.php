@@ -23,6 +23,7 @@
                         <th>No.</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Jenis Kelamin</th>
                         <th>Kelas</th>
                         <th>Jurusan</th>
                         <th width="100" class="text-center">Aksi</th>
@@ -36,6 +37,7 @@
                         <th>No.</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Jenis Kelamin</th>
                         <th>Kelas</th>
                         <th>Jurusan</th>
                         <th width="100" class="text-center">Aksi</th>

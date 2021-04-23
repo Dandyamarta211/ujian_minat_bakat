@@ -17,25 +17,25 @@ class Dashboard extends CI_Controller {
 		$box = [
 			[
 				'box' 		=> 'light-blue',
-				'total' 	=> $this->dashboard->total('jurusan'),
+				'total' 	=> $this->dashboard->total('siswa'),
 				'title'		=> 'Data Siswa',
 				'icon'		=> 'graduation-cap'
 			],
 			[
 				'box' 		=> 'olive',
-				'total' 	=> $this->dashboard->total('kelas'),
+				'total' 	=> $this->dashboard->total('tb_soal'),
 				'title'		=> 'Data Soal',
 				'icon'		=> 'building-o'
 			],
 			[
 				'box' 		=> 'yellow-active',
 				'total' 	=> $this->dashboard->total('guru'),
-				'title'		=> 'Data Nilai',
+				'title'		=> 'Data Guru',
 				'icon'		=> 'user-secret'
 			],
 			[
 				'box' 		=> 'red',
-				'total' 	=> $this->dashboard->total('siswa'),
+				'total' 	=> $this->dashboard->total('users'),
 				'title'		=> 'Akun',
 				'icon'		=> 'user'
 			],

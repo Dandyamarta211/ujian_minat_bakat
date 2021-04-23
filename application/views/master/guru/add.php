@@ -18,12 +18,12 @@
                 </div>
                 <div class="form-group">
                     <label for="nama_guru">Nama Guru</label>
-                    <input type="text" class="form-control" name="nama_dosen" placeholder="Nama Dosen">
+                    <input type="text" class="form-control" name="nama_guru" placeholder="Nama Guru">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Guru</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email Dosen">
+                    <input type="text" class="form-control" name="email" placeholder="Email Guru">
                     <small class="help-block"></small>
                 </div>
                 <div class="form-group">
@@ -37,10 +37,7 @@
                             <option value="matkul">jaringan</option>
                             <option value="matkul">Animasi</option>
                             <option value="matkul">Pemograman</option>
-                            <option value="matkul">B.Daerah</option>
-                        <?php foreach ($matkul as $row) : ?>
-                            <option value="<?=$row->id_matkul?>"><?=$row->nama_matkul?></option>
-                        <?php endforeach; ?>
+                            <option value="matkul">B.Daerah</option> 
                     </select>
                     <small class="help-block"></small>
                 </div>

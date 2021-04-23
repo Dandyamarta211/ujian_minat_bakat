@@ -34,30 +34,30 @@ function load_kelas(id) {
 
 $(document).ready(function () {
 
-    ajaxcsrf();
+    // ajaxcsrf();
 
     // Load Jurusan
-    load_jurusan();
+    // load_jurusan();
 
     // Load Kelas By Jurusan
-    $('#jurusan').on('change', function () {
-        load_kelas($(this).val());
-    });
+    // $('#jurusan').on('change', function () {
+    //     load_kelas($(this).val());
+    // });
 
-    $('form#mahasiswa input, form#mahasiswa select').on('change', function () {
-        $(this).closest('.form-group').removeClass('has-error has-success');
-        $(this).nextAll('.help-block').eq(0).text('');
-    });
+    // $('form#siswa input, form#siswa select').on('change', function () {
+    //     $(this).closest('.form-group').removeClass('has-error has-success');
+    //     $(this).nextAll('.help-block').eq(0).text('');
+    // });
 
-    $('[name="jenis_kelamin"]').on('change', function () {
-        $(this).parent().nextAll('.help-block').eq(0).text('');
-    });
+    // $('[name="jenis_kelamin"]').on('change', function () {
+    //     $(this).parent().nextAll('.help-block').eq(0).text('');
+    // }); 
 
-    $('form#mahasiswa').on('submit', function (e) {
+    $('#formsiswa').on('submit', function (e) {
         e.preventDefault();
-        e.stopImmediatePropagation();
-
+        e.stopImmediatePropagation(); 
         var btn = $('#submit');
+
         btn.attr('disabled', 'disabled').text('Wait...');
 
         $.ajax({
@@ -67,17 +67,13 @@ $(document).ready(function () {
             success: function (data) {
                 btn.removeAttr('disabled').text('Simpan');
                 if (data.status) {
-                    Swal({
-                        "title": "Sukses",
-                        "text": "Data Berhasil disimpan",
-                        "type": "success"
-                    }).then((result) => {
+                    Swal('Sukses', 'Data Berhasil disimpan', 'success')
+                    .then((result) => {
                         if (result.value) {
-                            window.location.href = base_url+'mahasiswa';
+                            window.location.href = base_url+'siswa';
                         }
                     });
-                } else {
-                    console.log(data.errors);
+                } else { 
                     $.each(data.errors, function (key, value) {
                         $('[name="' + key + '"]').nextAll('.help-block').eq(0).text(value);
                         $('[name="' + key + '"]').closest('.form-group').addClass('has-error');

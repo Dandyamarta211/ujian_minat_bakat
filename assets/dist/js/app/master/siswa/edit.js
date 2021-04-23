@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
 
 
-    $('form#mahasiswa input, form#mahasiswa select').on('change', function () {
+    $('form#siswa input, form#siswa select').on('change', function () {
         $(this).closest('.form-group').removeClass('has-error has-success');
         $(this).nextAll('.help-block').eq(0).text('');
     });
@@ -38,7 +38,7 @@ $(document).ready(function () {
         $(this).parent().nextAll('.help-block').eq(0).text('');
     });
 
-    $('form#mahasiswa').on('submit', function (e) {
+    $('form#siswa').on('submit', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -58,7 +58,7 @@ $(document).ready(function () {
                         "type": "success"
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = base_url+'mahasiswa';
+                            window.location.href = base_url+'siswa';
                         }
                     });
                 } else {

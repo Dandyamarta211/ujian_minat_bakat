@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Guru extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -46,7 +45,7 @@ class Guru extends CI_Controller
 			'user' => $this->ion_auth->user()->row(),
 			'judul'	=> 'Tambah Guru',
 			'subjudul' => 'Tambah Data Guru',
-			'matkul'	=> $this->master->getAllMatkul()
+			// 'matkul'	=> $this->master->getAllMatkul()
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('master/guru/add');
